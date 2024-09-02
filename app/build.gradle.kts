@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id ("com.google.devtools.ksp")
+
 }
 
 android {
@@ -69,7 +71,12 @@ dependencies {
 
     implementation("androidx.compose.material:material-icons-extended:1.6.4")
 
+    //Room Database
+    implementation ("com.google.devtools.ksp:symbol-processing-api:1.6.21-1.0.6")
 
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
